@@ -167,12 +167,18 @@ copybuffer list
 ### Using Copybuffer in Node.js Applications
 
 ```typescript
+// If installed globally via npm link or published to npm:
 import { 
   clipboardMonitor, 
   searchManager, 
   storageManager,
   configManager 
 } from 'copybuffer';
+
+// For local development, import from the built files:
+// import { clipboardMonitor, searchManager, storageManager, configManager } from './dist/exports';
+// Or from source (requires TypeScript):
+// import { clipboardMonitor, searchManager, storageManager, configManager } from './src/exports';
 
 // Start monitoring
 clipboardMonitor.start();
@@ -202,7 +208,8 @@ clipboardMonitor.stop();
 ### Custom Clipboard Processing
 
 ```typescript
-import { storageManager, ClipboardEntry } from 'copybuffer';
+// For local development:
+import { storageManager, ClipboardEntry } from './dist/exports';
 
 // Load history
 const history = storageManager.loadHistory();

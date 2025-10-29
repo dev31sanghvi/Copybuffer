@@ -243,10 +243,14 @@ npm run format
 
 ## API Usage
 
-You can also use Copybuffer programmatically:
+You can also use Copybuffer programmatically in your Node.js applications:
 
 ```typescript
+// After installing globally with npm link:
 import { clipboardMonitor, searchManager, storageManager } from 'copybuffer';
+
+// For local development, import from the built files:
+// import { clipboardMonitor, searchManager, storageManager } from './dist/exports';
 
 // Start monitoring
 clipboardMonitor.start();
@@ -260,6 +264,8 @@ const recent = searchManager.getRecent(20);
 // Load history
 const history = storageManager.loadHistory();
 ```
+
+See [EXAMPLES.md](EXAMPLES.md) for more detailed usage examples.
 
 ## Troubleshooting
 
