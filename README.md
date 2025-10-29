@@ -228,7 +228,12 @@ Default hotkeys (configurable):
 - `F9` - Toggle clipboard history
 - `F10` - Search clipboard
 
-**Note**: The current implementation uses simple key bindings (like F9, F10) due to limitations in cross-platform global hotkey support. Complex key combinations (like Ctrl+Shift+V) are not currently supported but may be added in future versions. Hotkeys require proper permissions on Ubuntu.
+**Requirements**: 
+- Hotkeys require an X11 display server (graphical environment)
+- Works on Ubuntu/Linux with X11, Windows, and macOS
+- Will be automatically disabled if running in a headless/non-graphical environment
+
+**Note**: The current implementation uses simple key bindings (like F9, F10). Complex key combinations (like Ctrl+Shift+V) are not currently supported but may be added in future versions.
 
 ## Development
 
@@ -295,11 +300,13 @@ sudo apt-get install xclip
 
 ### Hotkeys not working
 
-Hotkeys require proper system permissions. On some Ubuntu configurations, you may need to:
+Hotkeys require an X11 display server (graphical environment). Common issues:
 
-1. Run with sudo (not recommended for regular use)
-2. Configure your desktop environment to allow global hotkeys
-3. Use the CLI commands instead
+1. **Running in headless mode**: Hotkeys won't work without a graphical environment. The application will still work for all other features.
+2. **Wayland instead of X11**: If you're using Wayland, you may need to switch to an X11 session or use XWayland compatibility.
+3. **Permission issues**: Ensure your user has permission to capture global keyboard events.
+
+If hotkeys are not essential to your workflow, you can use the CLI commands instead (e.g., `copybuffer list`, `copybuffer search`).
 
 ### Gist sync fails
 
