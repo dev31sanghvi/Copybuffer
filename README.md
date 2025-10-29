@@ -161,8 +161,8 @@ copybuffer config-set maxHistorySize 2000
 # Set data directory
 copybuffer config-set dataDir /path/to/data
 
-# Configure hotkeys
-copybuffer config-set hotkeys.toggleHistory "Ctrl+Alt+V"
+# Configure hotkeys (use simple keys like F9, F10)
+copybuffer config-set hotkeys.toggleHistory "F11"
 ```
 
 ## Configuration File
@@ -175,8 +175,8 @@ Configuration is stored at `~/.copybuffer/config.json`:
   "maxHistorySize": 1000,
   "autoSave": true,
   "hotkeys": {
-    "toggleHistory": "Ctrl+Shift+V",
-    "search": "Ctrl+Shift+F"
+    "toggleHistory": "F9",
+    "search": "F10"
   },
   "gist": {
     "enabled": false,
@@ -210,10 +210,10 @@ All clipboard data is stored in JSON format at `~/.copybuffer/`:
 
 Default hotkeys (configurable):
 
-- `Ctrl+Shift+V` - Toggle clipboard history
-- `Ctrl+Shift+F` - Search clipboard
+- `F9` - Toggle clipboard history
+- `F10` - Search clipboard
 
-**Note**: Hotkeys require proper permissions on Ubuntu. You may need to run with appropriate privileges.
+**Note**: The current implementation uses simple key bindings (like F9, F10) due to limitations in cross-platform global hotkey support. Complex key combinations (like Ctrl+Shift+V) are not currently supported but may be added in future versions. Hotkeys require proper permissions on Ubuntu.
 
 ## Development
 
