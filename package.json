@@ -1,0 +1,44 @@
+{
+  "name": "copybuffer",
+  "version": "1.0.0",
+  "description": "Smart clipboard manager with history, search and sync for Ubuntu developers",
+  "main": "dist/index.js",
+  "bin": {
+    "copybuffer": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "watch": "tsc --watch",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "clipboard",
+    "manager",
+    "ubuntu",
+    "history",
+    "search",
+    "gist",
+    "sync"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "clipboardy": "^3.0.0",
+    "commander": "^11.1.0",
+    "dotenv": "^16.3.1",
+    "node-global-key-listener": "^0.1.1",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/uuid": "^9.0.7",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.0"
+  }
+}
