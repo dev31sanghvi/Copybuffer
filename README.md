@@ -2,6 +2,13 @@
 
 A Smart Clipboard Manager for Ubuntu using TypeScript/Node.js that stores clipboard history in JSON files (no database needed), with hotkeys, search, and GitHub Gist sync.
 
+## 📖 Documentation
+
+- **[Setup Guide](SETUP.md)** - **START HERE!** Complete step-by-step installation guide
+- [Quick Reference](QUICKSTART.md) - Command cheat sheet
+- [Examples](EXAMPLES.md) - Practical usage scenarios
+- [Contributing](CONTRIBUTING.md) - Development guide
+
 ## Features
 
 - 📋 **Clipboard History**: Automatically saves clipboard content to JSON files
@@ -12,12 +19,15 @@ A Smart Clipboard Manager for Ubuntu using TypeScript/Node.js that stores clipbo
 - 🚀 **CLI Interface**: Full command-line interface for all operations
 - 🔒 **Privacy**: All data stored locally, sync is optional
 
-## Installation
+## Quick Installation
+
+**For detailed step-by-step instructions, see [SETUP.md](SETUP.md)**
 
 ### Prerequisites
 
 - Node.js 18+ and npm
 - Ubuntu/Linux (for clipboard and hotkey support)
+- xclip (install with: `sudo apt-get install xclip`)
 
 ### Install from source
 
@@ -33,8 +43,13 @@ npm install
 npm run build
 
 # Optional: Install globally
-npm link
+sudo npm link
+
+# Verify installation
+copybuffer --help
 ```
+
+**Having trouble?** Check the [Setup Guide](SETUP.md) for troubleshooting steps.
 
 ## Usage
 
