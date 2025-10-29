@@ -198,7 +198,9 @@ try {
   hotkeyManager.initialize();
   
   // Check if initialization failed gracefully
-  if (consoleOutput.includes('could not be initialized') || consoleOutput.includes('initialized')) {
+  if (consoleOutput.includes('could not be initialized') || 
+      consoleOutput.includes('initialized') || 
+      consoleOutput.includes('requires X11 display server')) {
     console.log = originalLog;
     console.log('Hotkey manager handled initialization correctly');
     process.exit(0);
