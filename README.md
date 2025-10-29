@@ -11,13 +11,13 @@ A Smart Clipboard Manager for Ubuntu using TypeScript/Node.js that stores clipbo
 
 ## Features
 
-- 📋 **Clipboard History**: Automatically saves clipboard content to JSON files
-- 🔍 **Search**: Search through your clipboard history with powerful query options
-- ⌨️ **Hotkeys**: Global keyboard shortcuts for quick access (Ctrl+Shift+V, Ctrl+Shift+F)
-- 🔄 **GitHub Gist Sync**: Backup and sync your clipboard history to GitHub Gist
-- 💾 **JSON Storage**: All data stored in simple JSON files - no database required
-- 🚀 **CLI Interface**: Full command-line interface for all operations
-- 🔒 **Privacy**: All data stored locally, sync is optional
+-  **Clipboard History**: Automatically saves clipboard content to JSON files
+-  **Search**: Search through your clipboard history with powerful query options
+-  **Hotkeys**: Global keyboard shortcuts for quick access (Ctrl+Shift+V, Ctrl+Shift+F)
+-  **GitHub Gist Sync**: Backup and sync your clipboard history to GitHub Gist
+-  **JSON Storage**: All data stored in simple JSON files - no database required
+-  **CLI Interface**: Full command-line interface for all operations
+-  **Privacy**: All data stored locally, sync is optional
 
 ## Quick Installation
 
@@ -332,13 +332,5 @@ MIT License - See LICENSE file for details
 
 ## Author
 
-Created for personal use by Ubuntu developers who want a simple, powerful clipboard manager.
+Created for personal use by Dev Sanghvi
 
-## Roadmap
-
-- [ ] Add clipboard type detection (images, files, etc.)
-- [ ] Implement clipboard categories/tags
-- [ ] Add GUI interface
-- [ ] Support for encrypted clipboard entries
-- [ ] Cross-platform support (macOS, Windows)
-- [ ] Plugin system for custom clipboard processors
