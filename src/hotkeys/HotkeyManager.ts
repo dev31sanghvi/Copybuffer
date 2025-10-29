@@ -10,8 +10,10 @@ export class HotkeyManager {
       console.log('Hotkey manager initialized');
       this.setupDefaultHotkeys();
     } catch (error) {
-      console.error('Failed to initialize hotkey manager:', error);
-      console.log('Note: Hotkeys require proper permissions on Ubuntu');
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.log('Note: Hotkey manager could not be initialized -', errorMessage);
+      console.log('Hotkeys are disabled, but clipboard monitoring will continue to work normally.');
+      console.log('For hotkey support, ensure you are running on a supported OS with proper permissions.');
     }
   }
 

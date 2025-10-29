@@ -176,6 +176,47 @@ EOF
 run_test "Module imports work" "node /tmp/test-imports.js"
 echo ""
 
+echo "11. Hotkey Manager Tests"
+echo "------------------------"
+
+# Create a test script to verify hotkey manager handles unsupported OS gracefully
+cat > /tmp/test-hotkey.js << 'EOF'
+const path = require('path');
+const projectDir = '/home/runner/work/Copybuffer/Copybuffer';
+const { hotkeyManager } = require(path.join(projectDir, 'dist/hotkeys/HotkeyManager'));
+
+// Capture console output
+let consoleOutput = '';
+const originalLog = console.log;
+console.log = (...args) => {
+  consoleOutput += args.join(' ') + '\n';
+  originalLog(...args);
+};
+
+// Test initialization (should not throw)
+try {
+  hotkeyManager.initialize();
+  
+  // Check if initialization failed gracefully
+  if (consoleOutput.includes('could not be initialized') || consoleOutput.includes('initialized')) {
+    console.log = originalLog;
+    console.log('Hotkey manager handled initialization correctly');
+    process.exit(0);
+  } else {
+    console.log = originalLog;
+    console.error('Unexpected console output:', consoleOutput);
+    process.exit(1);
+  }
+} catch (error) {
+  console.log = originalLog;
+  console.error('Hotkey manager should not throw errors during initialization:', error);
+  process.exit(1);
+}
+EOF
+
+run_test "Hotkey manager initialization gracefully handles unsupported OS" "node /tmp/test-hotkey.js"
+echo ""
+
 echo "======================================"
 echo "   Test Summary"
 echo "======================================"
