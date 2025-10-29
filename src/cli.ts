@@ -199,21 +199,45 @@ program
 
 program
   .command('config-set <key> <value>')
-  .description('Set a configuration value')
+  .description('Set a configuration value (e.g., maxHistorySize, dataDir, gist.enabled)')
   .action((key, value) => {
     const config = configManager.getConfig();
-    const keys = key.split('.');
     
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let current: any = config;
-    for (let i = 0; i < keys.length - 1; i++) {
-      if (!current[keys[i]]) {
-        current[keys[i]] = {};
-      }
-      current = current[keys[i]];
+    // Whitelist of allowed config paths to prevent prototype pollution
+    const allowedPaths = [
+      'dataDir',
+      'maxHistorySize',
+      'autoSave',
+      'hotkeys.toggleHistory',
+      'hotkeys.search',
+      'gist.enabled',
+      'gist.token',
+      'gist.gistId',
+    ];
+    
+    if (!allowedPaths.includes(key)) {
+      console.error(
+        `Error: Invalid config key. Allowed keys: ${allowedPaths.join(', ')}`
+      );
+      return;
     }
     
-    current[keys[keys.length - 1]] = value;
+    // Safe key update using whitelist
+    const keys = key.split('.');
+    if (keys.length === 1) {
+      // Top-level key
+      (config as any)[keys[0]] = value;
+    } else if (keys.length === 2) {
+      // Nested key (one level)
+      if (!(config as any)[keys[0]]) {
+        (config as any)[keys[0]] = {};
+      }
+      (config as any)[keys[0]][keys[1]] = value;
+    } else {
+      console.error('Error: Config key depth not supported');
+      return;
+    }
+    
     configManager.saveConfig(config);
     console.log(`Set ${key} = ${value}`);
   });
