@@ -132,7 +132,7 @@ copybuffer import ~/clipboard-backup.json
 1. Create a GitHub Personal Access Token:
    - Go to GitHub Settings → Developer settings → Personal access tokens
    - Generate new token with `gist` scope
-   
+
 2. Configure Copybuffer:
 
 ```bash
@@ -325,13 +325,6 @@ MIT License - See LICENSE file for details
 
 ## Author
 
-Created for personal use by Ubuntu developers who want a simple, powerful clipboard manager.
+Created for personal use by Dev Sanghvi .
 
-## Roadmap
 
-- [ ] Add clipboard type detection (images, files, etc.)
-- [ ] Implement clipboard categories/tags
-- [ ] Add GUI interface
-- [ ] Support for encrypted clipboard entries
-- [ ] Cross-platform support (macOS, Windows)
-- [ ] Plugin system for custom clipboard processors
