@@ -71,9 +71,15 @@ echo "2. CLI Tests"
 echo "------------"
 run_test "CLI help command" "node dist/cli.js --help"
 run_test "CLI version command" "node dist/cli.js --version"
+verify_output "Status command shows in help" "node dist/cli.js --help" "status"
 echo ""
 
-echo "3. Configuration Tests"
+echo "3. Status Tests"
+echo "--------------"
+verify_output "Status when not running" "node dist/cli.js status" "not running"
+echo ""
+
+echo "4. Configuration Tests"
 echo "---------------------"
 verify_output "Default config creation" "node dist/cli.js config" "dataDir"
 verify_output "Config contains maxHistorySize" "node dist/cli.js config" "maxHistorySize"
@@ -82,7 +88,7 @@ run_test "Set config value" "node dist/cli.js config-set maxHistorySize 500"
 verify_output "Verify config update" "node dist/cli.js config" '"maxHistorySize": "500"'
 echo ""
 
-echo "4. Storage Tests"
+echo "5. Storage Tests"
 echo "---------------"
 
 # Create test data
@@ -116,39 +122,39 @@ run_test "Export history" "node dist/cli.js export /tmp/test-export.json"
 run_test "Exported file exists" "test -f /tmp/test-export.json"
 echo ""
 
-echo "5. Search Tests"
+echo "6. Search Tests"
 echo "--------------"
 verify_output "Search finds entry" "node dist/cli.js search 'keyword'" "Test entry 2"
 verify_output "Search with limit" "node dist/cli.js search 'test' --limit 2" "Test entry"
 verify_output "Search no results" "node dist/cli.js search 'nonexistent'" "No results found"
 echo ""
 
-echo "6. Delete Tests"
+echo "7. Delete Tests"
 echo "--------------"
 run_test "Delete entry" "node dist/cli.js delete test-001"
 verify_output "Entry deleted" "node dist/cli.js search 'Test entry 1'" "No results found"
 echo ""
 
-echo "7. List Tests"
+echo "8. List Tests"
 echo "------------"
 verify_output "List default limit" "node dist/cli.js list" "Showing"
 verify_output "List with custom limit" "node dist/cli.js list --limit 5" "Showing"
 echo ""
 
-echo "8. Clear Tests"
+echo "9. Clear Tests"
 echo "-------------"
 run_test "Clear history" "node dist/cli.js clear --yes"
 verify_output "History cleared" "node dist/cli.js list" "No clipboard history found"
 echo ""
 
-echo "9. File Structure Tests"
+echo "10. File Structure Tests"
 echo "----------------------"
 run_test "Config directory exists" "test -d ~/.copybuffer"
 run_test "Config file exists" "test -f ~/.copybuffer/config.json"
 run_test "History file exists" "test -f ~/.copybuffer/history.json"
 echo ""
 
-echo "10. Module Tests"
+echo "11. Module Tests"
 echo "---------------"
 
 # Create a simple test script to verify imports
@@ -176,7 +182,7 @@ EOF
 run_test "Module imports work" "node /tmp/test-imports.js"
 echo ""
 
-echo "11. Hotkey Manager Tests"
+echo "12. Hotkey Manager Tests"
 echo "------------------------"
 
 # Create a test script to verify hotkey manager handles unsupported OS gracefully

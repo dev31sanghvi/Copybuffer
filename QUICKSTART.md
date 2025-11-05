@@ -32,6 +32,7 @@ copybuffer --help
 |---------|-------------|---------|
 | `start` | Start clipboard monitoring | `copybuffer start` |
 | `stop` | Stop clipboard monitoring | `copybuffer stop` |
+| `status` | Check if copybuffer is running | `copybuffer status` |
 | `list` | List clipboard history | `copybuffer list --limit 20` |
 | `search <query>` | Search clipboard history | `copybuffer search "github"` |
 | `copy <id>` | Copy entry to clipboard | `copybuffer copy abc123-def-456` |

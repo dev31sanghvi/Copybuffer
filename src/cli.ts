@@ -43,6 +43,19 @@ program
     hotkeyManager.destroy();
   });
 
+// Status command
+program
+  .command('status')
+  .description('Check if copybuffer is running')
+  .action(() => {
+    const isRunning = clipboardMonitor.isRunning();
+    if (isRunning) {
+      console.log('Copybuffer is running');
+    } else {
+      console.log('Copybuffer is not running');
+    }
+  });
+
 // List history command
 program
   .command('list')

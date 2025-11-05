@@ -63,6 +63,14 @@ copybuffer start
 
 This will run in the foreground. Press Ctrl+C to stop.
 
+### Check Status
+
+Check if copybuffer is running:
+
+```bash
+copybuffer status
+```
+
 ### List Clipboard History
 
 View your recent clipboard entries:
